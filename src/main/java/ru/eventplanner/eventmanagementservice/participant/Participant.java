@@ -1,21 +1,23 @@
 package ru.eventplanner.eventmanagementservice.participant;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Data
+@AllArgsConstructor
 @Entity
+@NoArgsConstructor(force = true)
 @IdClass(ParticipantPK.class)
+@Table(name = "participants")
 public class Participant {
 
     @Id
-    private Long eventId;
+    private final Long eventId;
 
     @Id
-    private String userId;
+    private final Long userId;
 
     private String status;
 }

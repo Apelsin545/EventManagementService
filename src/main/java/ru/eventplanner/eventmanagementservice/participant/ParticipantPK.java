@@ -9,5 +9,5 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class ParticipantPK implements Serializable {
     private Long eventId;
-    private String userId;
+    private Long userId;
 }

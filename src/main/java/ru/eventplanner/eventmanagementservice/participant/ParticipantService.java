@@ -23,6 +23,10 @@ public class ParticipantService {
         return participantRepository.findByUserId(userId);
     }
 
+    public List<Participant> findByEventId(Long eventId) {
+        return participantRepository.findByEventId(eventId);
+    }
+
     public void updateStatus(Long eventId, Long userId, String newStatus) {
         participantRepository.updateStatus(eventId, userId, newStatus);
     }
