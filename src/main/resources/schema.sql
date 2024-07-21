@@ -13,5 +13,6 @@ CREATE TABLE IF NOT EXISTS participants
 (
     event_id   BIGINT NOT NULL REFERENCES events (id),
     user_id    BIGINT NOT NULL,
-    status     VARCHAR(64) DEFAULT 'pending'
+    status     VARCHAR(64) DEFAULT 'pending',
+    primary key(event_id, user_id)
 );
