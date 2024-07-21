@@ -1,10 +1,10 @@
 package ru.eventplanner.eventmanagementservice.event;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class EventService {
@@ -19,8 +19,12 @@ public class EventService {
         return eventRepository.save(event);
     }
 
+    public Optional<Event> findById(Long id) {
+        return eventRepository.findById(id);
+    }
+
     public void deleteByDateTime(LocalDateTime startDateTime) {
-        eventRepository.deleteByStartDateTime(startDateTime);
+        eventRepository.deleteByStartDateTimeBefore(startDateTime);
     }
 
 

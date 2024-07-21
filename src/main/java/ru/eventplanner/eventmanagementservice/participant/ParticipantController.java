@@ -10,16 +10,14 @@ import java.util.List;
 public class ParticipantController {
 
     private final ParticipantService participantService;
-    private final ParticipantRepository participantRepository;
 
     @Autowired
     public ParticipantController(ParticipantService participantService, ParticipantRepository participantRepository) {
         this.participantService = participantService;
-        this.participantRepository = participantRepository;
     }
 
     @PostMapping
-    public Participant saveParticipant(Participant participant) {
+    public Participant saveParticipant(@RequestBody Participant participant) {
         return participantService.save(participant);
     }
 
@@ -39,7 +37,7 @@ public class ParticipantController {
             @RequestParam("userId") Long userId,
             @RequestParam("status") String newStatus
             ) {
-        participantRepository.updateStatus(eventId, userId, newStatus);
+        participantService.updateStatus(eventId, userId, newStatus);
     }
 
     @DeleteMapping

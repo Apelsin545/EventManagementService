@@ -7,5 +7,5 @@ import java.time.LocalDateTime;
 
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long> {
-    void deleteByStartDateTime(LocalDateTime startDateTime);
+    void deleteByStartDateTimeBefore(LocalDateTime startDateTime);
 }
