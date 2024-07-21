@@ -1,7 +1,10 @@
 package ru.eventplanner.eventmanagementservice.event;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Service
 public class EventService {
@@ -14,5 +17,9 @@ public class EventService {
 
     public Event save(Event event) {
         return eventRepository.save(event);
+    }
+
+    public void deleteEvent(LocalDateTime dateTime) {
+        eventRepository.deleteByDateTime(dateTime);
     }
 }
