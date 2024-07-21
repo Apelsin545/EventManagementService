@@ -26,4 +26,8 @@ public class ParticipantService {
     public void updateStatus(Long eventId, Long userId, String newStatus) {
         participantRepository.updateStatus(eventId, userId, newStatus);
     }
+
+    public void remove(Participant participant) {
+        participantRepository.delete(participant);
+    }
 }
