@@ -19,7 +19,9 @@ public class EventService {
         return eventRepository.save(event);
     }
 
-    public void deleteEvent(LocalDateTime dateTime) {
+    public void deleteByDateTime(LocalDateTime dateTime) {
         eventRepository.deleteByDateTime(dateTime);
     }
+
+    
 }
