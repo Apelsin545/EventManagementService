@@ -1,10 +1,11 @@
 package ru.eventplanner.eventmanagementservice.event;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-import java.util.Optional;
+import java.util.NoSuchElementException;
+import java.util.function.Supplier;
 
 @RestController
 @RequestMapping("/event")
@@ -22,8 +23,9 @@ public class EventController {
     }
 
     @GetMapping("/{eventId}")
-    public Event findEventById(@PathVariable Long eventId) {
-        return eventService.findById(eventId).orElseThrow();
+    public ResponseEntity<Event> findEventById(@PathVariable Long eventId) {
+        Event event = eventService.findById(eventId);
+        return ResponseEntity.ok(event);
     }
 
     @DeleteMapping

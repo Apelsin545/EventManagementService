@@ -22,8 +22,9 @@ public class EventService {
         return eventRepository.save(event);
     }
 
-    public Optional<Event> findById(Long id) {
-        return eventRepository.findById(id);
+    public Event findById(Long id) {
+        return eventRepository.findById(id)
+                .orElseThrow(() -> new EventNotFoundException("Event not found with id " + id));
     }
 
     public void deleteByDateTime(LocalDateTime startDateTime) {
