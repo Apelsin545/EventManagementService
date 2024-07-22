@@ -27,7 +27,7 @@ public class EventController {
     }
 
     @DeleteMapping
-    public void deleteByStartTime(@RequestBody LocalDateTime dateTime) {
-        eventService.deleteByDateTime(dateTime);
+    public void deleteByStartTime(@RequestBody LocalDateTimeWrapper wrapper) {
+        eventService.deleteByDateTime(wrapper.dateTime());
     }
 }

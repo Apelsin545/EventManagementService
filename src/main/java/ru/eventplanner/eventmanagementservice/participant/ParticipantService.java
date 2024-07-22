@@ -27,11 +27,15 @@ public class ParticipantService {
         return participantRepository.findByEventId(eventId);
     }
 
-    public void updateStatus(Long eventId, Long userId, String newStatus) {
+    public void updateStatus(Long eventId, Long userId, Participant.Status newStatus) {
         participantRepository.updateStatus(eventId, userId, newStatus);
     }
 
-    public void remove(Participant participant) {
+    public void delete(Participant participant) {
         participantRepository.delete(participant);
+    }
+
+    public void deleteByEventId(Long eventId) {
+        participantRepository.deleteByEventId(eventId);
     }
 }

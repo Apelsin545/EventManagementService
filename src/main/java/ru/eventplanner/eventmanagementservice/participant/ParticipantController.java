@@ -18,6 +18,8 @@ public class ParticipantController {
 
     @PostMapping
     public Participant saveParticipant(@RequestBody Participant participant) {
+        if (participant.getStatus() == null)
+            participant.setStatus(Participant.Status.PENDING);
         return participantService.save(participant);
     }
 
@@ -35,13 +37,13 @@ public class ParticipantController {
     public void updateParticipantStatus(
             @RequestParam("eventId") Long eventId,
             @RequestParam("userId") Long userId,
-            @RequestParam("status") String newStatus
+            @RequestParam("status") Participant.Status newStatus
             ) {
         participantService.updateStatus(eventId, userId, newStatus);
     }
 
     @DeleteMapping
     public void removeParticipant(Participant participant) {
-        participantService.remove(participant);
+        participantService.delete(participant);
     }
 }

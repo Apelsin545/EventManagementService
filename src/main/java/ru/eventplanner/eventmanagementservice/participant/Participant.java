@@ -19,6 +19,11 @@ public class Participant {
     @Id
     private final Long userId;
 
-    private String status;
+    @Enumerated
+    private Status status;
+
+    public enum Status {
+        PENDING, ACCEPTED, REJECTED
+    }
 }
 
