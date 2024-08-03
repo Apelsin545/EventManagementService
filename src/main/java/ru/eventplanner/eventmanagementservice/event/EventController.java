@@ -1,12 +1,11 @@
 package ru.eventplanner.eventmanagementservice.event;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.NoSuchElementException;
-import java.util.function.Supplier;
-
+@Slf4j
 @RestController
 @RequestMapping("/event")
 public class EventController {
@@ -19,6 +18,7 @@ public class EventController {
 
     @PostMapping
     public Event saveEvent(@RequestBody Event event) {
+        log.info("Saving event: {}", event);
         return eventService.save(event);
     }
 

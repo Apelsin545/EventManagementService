@@ -6,9 +6,14 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import ru.eventplanner.eventmanagementservice.event.EventNotFoundException;
+import ru.eventplanner.eventmanagementservice.participant.ParticipantNotFoundException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
+    @ExceptionHandler(ParticipantNotFoundException.class)
+    public ResponseEntity<?> handleParticipantNotFoundException(ParticipantNotFoundException ex, WebRequest request) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
 
     @ExceptionHandler(EventNotFoundException.class)
     public ResponseEntity<?> handleEventNotFoundException(EventNotFoundException ex, WebRequest request) {

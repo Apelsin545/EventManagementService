@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS events
     location        VARCHAR(128),
     created_by      BIGINT      NOT NULL,
     start_date_time TIMESTAMP   NOT NULL,
-    end_date_time   TIMESTAMP   NOT NULL
+    end_date_time   TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS participants

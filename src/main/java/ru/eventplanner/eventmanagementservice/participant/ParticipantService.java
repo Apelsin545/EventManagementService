@@ -15,6 +15,11 @@ public class ParticipantService {
         this.participantRepository = participantRepository;
     }
 
+    public Participant getById(ParticipantPK participantPK) {
+        return participantRepository.findById(participantPK)
+                .orElseThrow(() -> new ParticipantNotFoundException("Participant not found with pk: " + participantPK));
+    }
+
     public Participant save(Participant participant) {
         return participantRepository.save(participant);
     }
