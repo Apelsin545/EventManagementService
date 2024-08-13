@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequestMapping("/event")
@@ -20,6 +22,11 @@ public class EventController {
     public Event saveEvent(@RequestBody Event event) {
         log.info("Saving event: {}", event);
         return eventService.save(event);
+    }
+
+    @GetMapping("/accepted")
+    public List<Event> getAcceptedEventsByParticipant(@RequestHeader("chatId") Long chatId) {
+        return eventService.getAcceptedEventsByParticipant(chatId);
     }
 
     @GetMapping("/{eventId}")

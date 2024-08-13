@@ -7,6 +7,9 @@ import ru.eventplanner.eventmanagementservice.participant.Participant;
 import ru.eventplanner.eventmanagementservice.participant.ParticipantRepository;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Slf4j
@@ -34,6 +37,10 @@ public class EventService {
 
         participantRepository.save(savedParticipant);
         return eventRepository.save(event);
+    }
+
+    public List<Event> getAcceptedEventsByParticipant(Long chatId) {
+        return eventRepository.findAcceptedEventsByUser(chatId);
     }
 
     public Event findById(Long id) {

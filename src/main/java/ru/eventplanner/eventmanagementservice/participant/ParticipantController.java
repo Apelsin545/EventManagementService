@@ -49,11 +49,7 @@ public class ParticipantController {
 
     @PutMapping
     public void updateParticipantStatus(@RequestBody Participant participant) {
-        participantService.updateStatus(
-                participant.getEventId(),
-                participant.getUserId(),
-                participant.getStatus()
-        );
+        participantService.updateStatus(participant);
     }
 
     @DeleteMapping
